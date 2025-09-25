@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中秋祝福语 - Mooncake Blessings</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .moon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .blessing {
+            font-size: 1.5em;
+            line-height: 1.6;
+            color: #444;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #FFD700;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .refresh-btn {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .auto-refresh {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .blessing {
+                font-size: 1.2em;
+            }
+            .moon {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="moon">🌕</div>
+        <h1>中秋祝福语</h1>
+        <div class="blessing" id="blessing"></div>
+        <button class="refresh-btn" onclick="showRandomBlessing()">换一句祝福</button>
+        <div class="auto-refresh">页面每次刷新都会显示不同的祝福语</div>
+    </div>
+
+    <script>
+        // 中秋祝福语数组
+        const blessings = [
+            "月圆人圆事事圆，花好灯好好事连，祝你中秋快乐！",
+            "千里共婵娟，愿你平安喜乐常相伴。",
+            "中秋佳节到，愿你合家团圆，幸福安康。",
+            "祝福像这轮明月，温柔照亮你的生活。",
+            "花好月圆夜，吉祥幸福伴。",
+            "但愿人长久，千里共此时。",
+            "一轮明月挂天边，祝福心意在身边。",
+            "中秋快乐，愿心想事成，团圆美满。",
+            "月色如水，思念如风，愿你生活顺遂。",
+            "祝你中秋甜蜜无限，幸福满满。",
+            "明月寄相思，祝福满人心。",
+            "花灯映团圆，心愿寄平安。",
+            "举杯邀明月，幸福长相随。",
+            "月到中秋分外明，情到深处格外真。",
+            "合家团圆乐，幸福伴君行。",
+            "中秋月圆夜，愿你好运常伴。",
+            "笑语盈盈共良宵，幸福美满乐逍遥。",
+            "月圆福满门，阖家幸福长。",
+            "明月千里寄相思，平安喜乐伴君行。",
+            "祝你中秋佳节，健康美满，心想事成。"
+        ];
+
+        function getRandomBlessing() {
+            const randomIndex = Math.floor(Math.random() * blessings.length);
+            return blessings[randomIndex];
+        }
+
+        function showRandomBlessing() {
+            const blessingElement = document.getElementById('blessing');
+            const randomBlessing = getRandomBlessing();
+            
+            // 添加淡出效果
+            blessingElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                blessingElement.textContent = randomBlessing;
+                blessingElement.style.opacity = '1';
+            }, 200);
+        }
+
+        // 页面加载时显示随机祝福语
+        window.onload = function() {
+            showRandomBlessing();
+        };
+    </script>
+</body>
+</html>
